@@ -5,7 +5,7 @@ public class Main {
 
         timer.start();
 
-        System.out.println(solution.lengthOfLongestSubstring("dvdc"));
+        System.out.println(solution.climbStairs(3));
 
         timer.stop();
         System.out.println("Milliseconds: " + timer.elapsedTime() / 1000000f);
