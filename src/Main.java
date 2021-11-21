@@ -5,7 +5,7 @@ public class Main {
 
         timer.start();
 
-        System.out.println(solution.tribonacci(25));
+        System.out.println(solution.lengthOfLongestSubstring("dvdc"));
 
         timer.stop();
         System.out.println("Milliseconds: " + timer.elapsedTime() / 1000000f);
