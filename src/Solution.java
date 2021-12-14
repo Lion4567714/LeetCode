@@ -36,6 +36,49 @@ public class Solution {
     }
 
     /**
+     * Question 9: Palindrome Number
+     */
+    public boolean isPalindrome(int x) {
+        String str = Integer.toString(x);
+
+        for (int i = 0; i < str.length() / 2; i++) {
+            if (str.charAt(i) != str.charAt(str.length() - i - 1)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Question 11: Container With Most Water
+     */
+    public int maxArea(int[] height) {
+        int maxVol = 0;
+        int[] dimensions = new int[]{0, 0};
+
+        for (int i = 0; i < height.length - 1; i++) {
+            for (int j = height.length - 1; j > i; j--) {
+                if (height[j] < dimensions[0] && height[j] < dimensions[1]) {
+                    continue;
+                }
+
+                dimensions[0] = j - i;
+                dimensions[1] = height[i];
+                if (height[j] < dimensions[1]) {
+                    dimensions[1] = height[j];
+                }
+
+                if (dimensions[0] * dimensions[1] > maxVol) {
+                    maxVol = dimensions[0] * dimensions[1];
+                }
+            }
+        }
+
+        return maxVol;
+    }
+
+    /**
      * Question 70: Climbing Stairs
      */
     public int climbStairs(int n) {
@@ -101,5 +144,12 @@ public class Solution {
         }
 
         return third;
+    }
+
+    public void fuck() {
+        Deque<Integer> n = new ArrayDeque<>();
+        n.push(5);
+        n.push(7);
+        n.push(9)
     }
 }
