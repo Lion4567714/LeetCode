@@ -79,6 +79,40 @@ public class Solution {
     }
 
     /**
+     * Question 56: Merge Intervals
+     */
+    public int[][] merge(int[][] intervals) {
+        boolean[] isUsed = new boolean[intervals.length];
+        ArrayList<int[]> mergedIntervals = new ArrayList<>();
+
+        for (int i = 0; i < intervals.length; i++) {
+            if (isUsed[i])
+                continue;
+
+            int[] mergeInterval = intervals[i];
+            isUsed[i] = true;
+
+            for (int j = i; j < intervals.length; j++) {
+                if (isUsed[i])
+                    continue;
+
+                if (intervals[j][0] < mergeInterval[0]) {
+                    mergeInterval[0] = intervals[j][0];
+                    isUsed[j] = true;
+                }
+                if (mergeInterval[1] < intervals[j][1]) {
+                    mergeInterval[1] = intervals[j][1];
+                    isUsed[j] = true;
+                }
+            }
+
+            mergedIntervals.add(mergeInterval);
+        }
+
+        return mergedIntervals.toArray(new int[mergedIntervals.size()][]);
+    }
+
+    /**
      * Question 70: Climbing Stairs
      */
     public int climbStairs(int n) {
@@ -144,12 +178,5 @@ public class Solution {
         }
 
         return third;
-    }
-
-    public void fuck() {
-        Deque<Integer> n = new ArrayDeque<>();
-        n.push(5);
-        n.push(7);
-        n.push(9)
     }
 }
